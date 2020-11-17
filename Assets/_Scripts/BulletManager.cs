@@ -56,11 +56,12 @@ public class BulletManager
         }
     }
 
-    public GameObject GetBullet(Vector3 position)
+    public GameObject GetBullet(Vector3 position, Vector3 direction)
     {
         var newBullet = m_bulletPool.Dequeue();
         newBullet.SetActive(true);
         newBullet.transform.position = position;
+        newBullet.GetComponent<BulletController>().direction = direction;
         return newBullet;
     }
 

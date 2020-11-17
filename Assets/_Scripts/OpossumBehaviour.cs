@@ -32,6 +32,9 @@ public class OpossumBehaviour : MonoBehaviour
 
     public LOS los;
 
+    [Header("Bullet Firing")]
+    public int fireDelay;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +48,12 @@ public class OpossumBehaviour : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log("Has LOS: " + _HasLOS());
+        if(_HasLOS())
+        {
+            _FireBullet();
+        }
+
+
 
         _LookInFront();
         _LookAhead();
@@ -69,6 +77,17 @@ public class OpossumBehaviour : MonoBehaviour
 
         return false;
     }
+
+    private void _FireBullet()
+    {
+        // delay bullet firing 
+        if (Time.frameCount % fireDelay == 0 && BulletManager.Instance().HasBullets())
+        {
+
+            BulletManager.Instance().GetBullet(transform.position, Vector2.left * transform.localScale);
+        }
+    }
+
 
     private void _LookInFront()
     {

@@ -7,7 +7,8 @@ public class BulletController : MonoBehaviour, IApplyDamage
     public float verticalSpeed;
     public float verticalBoundary;
     public int damage;
-    
+    public Vector3 direction;
+
     // Update is called once per frame
     void Update()
     {
@@ -17,7 +18,7 @@ public class BulletController : MonoBehaviour, IApplyDamage
 
     private void _Move()
     {
-        transform.position += new Vector3(0.0f, verticalSpeed, 0.0f) * Time.deltaTime;
+        transform.position += direction * verticalSpeed * Time.deltaTime;
     }
 
     private void _CheckBounds()
