@@ -23,21 +23,51 @@ public class OpossumBehaviour : MonoBehaviour
     public bool isGroundAhead;
     public bool onRamp;
     public RampDirection rampDirection;
-   
+
+    public Collider2D collidesWith;
+    public ContactFilter2D contactFilter;
+    public List<Collider2D> colliders;
+
+    public BoxCollider2D LOSCollider;
+
+    public LOS los;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         rampDirection = RampDirection.NONE;
+
+        colliders = new List<Collider2D>();
+        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.Log("Has LOS: " + _HasLOS());
+
         _LookInFront();
         _LookAhead();
         _Move();
+    }
+
+    private bool _HasLOS()
+    {
+        collidesWith = los.collidesWith;
+
+        Physics2D.GetContacts(LOSCollider, contactFilter, colliders);
+
+        if(colliders.Count > 0)
+        {
+            if (collidesWith.gameObject.name == "Player" && colliders[0].gameObject.name == "Player")
+            {
+                return true;
+            }
+        }
+        
+
+        return false;
     }
 
     private void _LookInFront()
