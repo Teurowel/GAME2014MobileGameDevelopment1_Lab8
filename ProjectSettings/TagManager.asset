@@ -9,6 +9,7 @@ TagManager:
   - Walls
   - Ramps
   - Opossum
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - Ramps
   - Opossum
   - Player
-  - 
-  - 
+  - AI
+  - Enemy
   - 
   - 
   - 

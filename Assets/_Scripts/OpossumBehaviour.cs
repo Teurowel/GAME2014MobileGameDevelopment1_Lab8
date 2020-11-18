@@ -24,16 +24,12 @@ public class OpossumBehaviour : MonoBehaviour
     public bool onRamp;
     public RampDirection rampDirection;
 
-    public Collider2D collidesWith;
-    public ContactFilter2D contactFilter;
-    public List<Collider2D> colliders;
-
-    public BoxCollider2D LOSCollider;
-
-    public LOS los;
+    public LOS opossumLOS;
 
     [Header("Bullet Firing")]
+    public Transform bulletSpawn;
     public int fireDelay;
+    public PlayerBehaviour player;
 
     // Start is called before the first frame update
     void Start()
@@ -41,8 +37,8 @@ public class OpossumBehaviour : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         rampDirection = RampDirection.NONE;
 
-        colliders = new List<Collider2D>();
-        
+        player = GameObject.FindObjectOfType<PlayerBehaviour>();
+
     }
 
     // Update is called once per frame
@@ -62,29 +58,27 @@ public class OpossumBehaviour : MonoBehaviour
 
     private bool _HasLOS()
     {
-        collidesWith = los.collidesWith;
-
-        Physics2D.GetContacts(LOSCollider, contactFilter, colliders);
-
-        if(colliders.Count > 0)
+        if (opossumLOS.colliders.Count > 0)
         {
-            if (collidesWith.gameObject.name == "Player" && colliders[0].gameObject.name == "Player")
+            if (opossumLOS.collidesWith.gameObject.name == "Player" && opossumLOS.colliders[0].gameObject.name == "Player")
             {
                 return true;
             }
         }
-        
-
         return false;
     }
 
     private void _FireBullet()
     {
-        // delay bullet firing 
+        //delay bullet firing
         if (Time.frameCount % fireDelay == 0 && BulletManager.Instance().HasBullets())
         {
+            var playerPosition = player.transform.position;
+            var firingDirection = Vector3.Normalize(playerPosition - bulletSpawn.position);
 
-            BulletManager.Instance().GetBullet(transform.position, Vector2.left * transform.localScale);
+            Debug.Log(firingDirection.ToString());
+
+            BulletManager.Instance().GetBullet(bulletSpawn.position, firingDirection);
         }
     }
 

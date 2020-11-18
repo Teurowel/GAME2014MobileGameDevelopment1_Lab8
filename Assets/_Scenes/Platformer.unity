@@ -1338,6 +1338,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &429812738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 429812739}
+  m_Layer: 14
+  m_Name: BulletSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &429812739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429812738}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.274, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1749181055}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &465079447 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
@@ -1363,9 +1393,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 676069483}
-  - component: {fileID: 676069485}
   - component: {fileID: 676069484}
-  m_Layer: 11
+  - component: {fileID: 676069485}
+  m_Layer: 13
   m_Name: LOS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1384,7 +1414,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1749181055}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &676069484
 MonoBehaviour:
@@ -1399,8 +1429,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collidesWith: {fileID: 0}
---- !u!61 &676069485
-BoxCollider2D:
+  contactFilter:
+    useTriggers: 1
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 4608
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  colliders: []
+--- !u!60 &676069485
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1412,7 +1457,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -7, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1422,9 +1467,11 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 12, y: 7.8}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.5, y: 0}
+      - {x: -13, y: 4.8}
+      - {x: -13, y: -4.8}
 --- !u!1 &717745441
 GameObject:
   m_ObjectHideFlags: 0
@@ -6632,53 +6679,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1290099564353206162, guid: 21be60da9c0455248a3b3651d116cfce, type: 3}
   m_PrefabInstance: {fileID: 1290099563079825290}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1851210727
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1851210728}
-  - component: {fileID: 1851210729}
-  m_Layer: 11
-  m_Name: AI Sences
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1851210728
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851210727}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1749181055}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1851210729
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851210727}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 10.11
 --- !u!1 &1879229212
 GameObject:
   m_ObjectHideFlags: 0
@@ -7038,11 +7038,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1290099562808568163, guid: 21be60da9c0455248a3b3651d116cfce, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1290099563484648953, guid: 21be60da9c0455248a3b3651d116cfce, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1290099564353206162, guid: 21be60da9c0455248a3b3651d116cfce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7107,26 +7107,34 @@ PrefabInstance:
     - target: {fileID: 1290099564353206163, guid: 21be60da9c0455248a3b3651d116cfce, type: 3}
       propertyPath: LOSCollider
       value: 
-      objectReference: {fileID: 676069485}
+      objectReference: {fileID: 0}
     - target: {fileID: 1290099564353206163, guid: 21be60da9c0455248a3b3651d116cfce, type: 3}
       propertyPath: los
       value: 
       objectReference: {fileID: 676069484}
     - target: {fileID: 1290099564353206163, guid: 21be60da9c0455248a3b3651d116cfce, type: 3}
       propertyPath: fireDelay
-      value: 60
+      value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1290099564353206163, guid: 21be60da9c0455248a3b3651d116cfce, type: 3}
+      propertyPath: opossumLOS
+      value: 
+      objectReference: {fileID: 676069484}
+    - target: {fileID: 1290099564353206163, guid: 21be60da9c0455248a3b3651d116cfce, type: 3}
+      propertyPath: bulletSpawn
+      value: 
+      objectReference: {fileID: 429812739}
     - target: {fileID: 1290099564353206169, guid: 21be60da9c0455248a3b3651d116cfce, type: 3}
       propertyPath: m_Name
       value: Opossum
       objectReference: {fileID: 0}
     - target: {fileID: 1290099564353206169, guid: 21be60da9c0455248a3b3651d116cfce, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1290099564353206169, guid: 21be60da9c0455248a3b3651d116cfce, type: 3}
       propertyPath: m_TagString
-      value: Opossum
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21be60da9c0455248a3b3651d116cfce, type: 3}
