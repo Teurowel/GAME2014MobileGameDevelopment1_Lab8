@@ -7,14 +7,41 @@ public class BulletController : MonoBehaviour, IApplyDamage
     public float verticalSpeed;
     public float verticalBoundary;
     public int damage;
+    public ContactFilter2D contactFilter;
+    public List<Collider2D> colliders;
     public Vector3 direction;
+
+    private BoxCollider2D boxCollider;
+
+    void Start()
+    {
+        boxCollider = GetComponent<BoxCollider2D>();
+        // direction = Vector3.up;
+    }
+
 
     // Update is called once per frame
     void Update()
     {
         _Move();
         _CheckBounds();
+        _CheckCollision();
     }
+
+    private void _CheckCollision()
+    {
+
+        Physics2D.GetContacts(boxCollider, contactFilter, colliders);
+
+        if (colliders.Count > 0)
+        {
+            if (colliders[0] != null)
+            {
+                BulletManager.Instance().ReturnBullet(gameObject);
+            }
+        }
+    }
+
 
     private void _Move()
     {
@@ -27,12 +54,6 @@ public class BulletController : MonoBehaviour, IApplyDamage
         {
             BulletManager.Instance().ReturnBullet(gameObject);
         }
-    }
-
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        //Debug.Log(other.gameObject.name);
-        BulletManager.Instance().ReturnBullet(gameObject);
     }
 
     public int ApplyDamage()

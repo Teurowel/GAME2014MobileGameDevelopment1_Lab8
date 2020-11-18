@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8142933913386669743}
   - component: {fileID: 9020430152687007726}
   - component: {fileID: 7917491952613714512}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Pulsing Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,8 +118,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verticalSpeed: 4
-  verticalBoundary: 5.1
-  bulletManager: {fileID: 0}
+  verticalBoundary: 50
+  damage: 0
+  contactFilter:
+    useTriggers: 1
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 49152
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  colliders: []
+  direction: {x: 0, y: 0, z: 0}
 --- !u!50 &9020430152687007726
 Rigidbody2D:
   serializedVersion: 4

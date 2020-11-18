@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7795625368583098001}
   - component: {fileID: 7795625368583098000}
   - component: {fileID: 7795625368583097999}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Fat Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 247e568325143d246b28f6172fe0cebe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 692631c569521024993681067e00360d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,8 +98,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verticalSpeed: 4
-  verticalBoundary: 5.1
-  bulletManager: {fileID: 0}
+  verticalBoundary: 50
+  damage: 0
+  contactFilter:
+    useTriggers: 1
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 46848
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  colliders: []
+  direction: {x: 0, y: 0, z: 0}
 --- !u!50 &7795625368583098000
 Rigidbody2D:
   serializedVersion: 4
@@ -138,7 +154,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.13}
+    oldSize: {x: 1, y: 0.8125}
     newSize: {x: 0.16, y: 0.13}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
